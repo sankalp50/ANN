@@ -66,3 +66,18 @@ y_pred = (y_pred > 0.5)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
+
+#finding accuracy from the confusion Matrix
+a = cm.shape
+corrPred = 0
+falsePred = 0
+
+for row in range(a[0]):
+    for c in range(a[1]):
+        if row == c:
+            corrPred +=cm[row,c]
+        else:
+            falsePred += cm[row,c]
+print('Correct predictions: ', corrPred)
+print('False predictions', falsePred)
+print ('\n\nAccuracy of the Naive Bayes Clasification is: ', corrPred/(cm.sum()))
